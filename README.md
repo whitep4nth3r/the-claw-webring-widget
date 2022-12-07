@@ -5,7 +5,7 @@
 Add the following to a page on your website.
 
 ```html
-<script type="module" src="https://link-to-cdn"></script>
+<script src="https://the-claw-webring-widget.netlify.app/the-claw-webring-widget.mjs" type="module"></script>
 
 <the-claw-webring-widget />
 ```
