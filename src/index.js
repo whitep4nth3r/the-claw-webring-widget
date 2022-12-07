@@ -12,7 +12,7 @@ function getRandomMember(members) {
   const randomMember = getRandomEntry(members);
 
   return `
-    <a href="${randomMember.url}" class="webring__random">Random</a>
+    <a href="${randomMember.url}" class="webring__random" part="random">Random</a>
   `;
 }
 
@@ -21,8 +21,8 @@ function makeMemberList(members) {
 
   return shuffledMembers
     .map(
-      (member) => `<li class="webring__membersListItem">
-        <a href="${member.url}" class="webring__membersListItemLink">
+      (member) => `<li class="webring__membersListItem" part="membersListItem">
+        <a href="${member.url}" class="webring__membersListItemLink" part="membersListItemLink">
           ${member.name}
         </a>
       </li>`,
@@ -44,11 +44,11 @@ class TheClawWebringWidget extends HTMLElement {
     const html = `
     <div class="webring">
     <!-- <img src="${meta.image}" alt="${meta.title}" class="webring__image" /> -->
-    <h3 class="webring__title">${meta.title}</h3>
+    <h3 class="webring__title" part="title">${meta.title}</h3>
     
     ${getRandomMember(members)}
     
-    <ul class="webring__membersList">
+    <ul class="webring__membersList" part="membersList">
     ${makeMemberList(members)}
     </ul>
     </div>
