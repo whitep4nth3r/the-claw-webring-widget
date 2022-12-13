@@ -44,9 +44,12 @@ class TheClawWebringWidget extends HTMLElement {
     const html = `
     <div class="tcww">
       <div class="tcww__inner">
-        <!-- <img src="${meta.image}" alt="${meta.title}" class="tcww__image" /> -->
-        <h3 class="tcww__title">${meta.title}</h3>
-        
+        <div class="tcww__header">
+          <img src="${meta.image}" alt="${meta.title}" class="tcww__image" />
+          <h3 class="tcww__title">${meta.title}</h3>
+          <p class="tcww_count">${members.length} members</p>
+        </div>
+
         ${getRandomMember(members)}
         
         <ul class="tcww__membersList">

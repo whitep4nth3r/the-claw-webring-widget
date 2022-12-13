@@ -47,6 +47,8 @@
   border-radius: calc(var(--border-radius-base) + 0.5rem);
   color: var(--color-fg);
   padding: 0.5rem;
+  font-family: system-ui;
+  font-size: 1rem;
 }
 
 .tcww__inner {
@@ -56,11 +58,30 @@
   padding: 1rem;
 }
 
+.tcww__header {
+  display: grid;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: flex-start;
+  grid-template-areas: "image title" "image count";
+}
+
 .tcww__title {
-  color: var(--color-fg);
-  font-family: system-ui;
+  grid-area: title;
   font-size: 1.4rem;
-  margin: 0 0 1rem 0;
+  margin: 0;
+}
+
+.tcww_count {
+  grid-area: count;
+  margin: 0;
+}
+
+.tcww__image {
+  grid-area: image;
+  height: 4rem;
+  transform: rotate(-8deg);
 }
 
 .tcww__membersList {
