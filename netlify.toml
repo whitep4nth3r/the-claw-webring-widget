@@ -2,6 +2,9 @@
   command = "vite build"
   publish = "dist"
 
+[dev]
+  command = "vite dev"
+
 [[headers]]
   for = "/*"
   [headers.values]

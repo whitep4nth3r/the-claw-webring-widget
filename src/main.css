@@ -1,3 +1,100 @@
-.webring {
+/* host is for WC, root is for HTML */
+
+:host {
+  all: unset;
+  display: block;
+  box-sizing: border-box;
+  text-align: start;
+  font-size: 100%;
+
+  --white: #ffffff;
+  --black: #0f111a;
+  --yellow: #ffb626;
+
+  --gap-unit: 0.25rem;
+
+  --border-radius-base: 1rem;
+
+  --text-decoration-thickness: 0.125rem;
+  --text-underline-offset: 0.125rem;
+
+  --yellow-red-gradient: linear-gradient(
+    90deg,
+    hsl(359deg 89% 50%) 0%,
+    hsl(11deg 92% 50%) 11%,
+    hsl(18deg 98% 49%) 22%,
+    hsl(23deg 100% 49%) 33%,
+    hsl(27deg 100% 49%) 44%,
+    hsl(30deg 100% 49%) 56%,
+    hsl(34deg 100% 50%) 67%,
+    hsl(36deg 99% 52%) 78%,
+    hsl(38deg 100% 55%) 89%,
+    hsl(40deg 100% 57%) 100%
+  );
+
+  /* theme="dark" is default */
+  --color-bg: var(--black);
+  --color-fg: var(--white);
+}
+
+:host([theme="light"]) {
+  --color-bg: var(--white);
+  --color-fg: var(--black);
+}
+
+.tcww {
+  background-image: var(--yellow-red-gradient);
+  border-radius: calc(var(--border-radius-base) + 0.5rem);
+  color: var(--color-fg);
+  padding: 0.5rem;
+}
+
+.tcww__inner {
+  background-color: var(--color-bg);
+  border-radius: var(--border-radius-base);
   font-family: system-ui;
+  padding: 1rem;
+}
+
+.tcww__title {
+  color: var(--color-fg);
+  font-family: system-ui;
+  font-size: 1.4rem;
+  margin: 0 0 1rem 0;
+}
+
+.tcww__membersList {
+  background-color: var(--color-bg);
+  padding-inline-start: 0;
+  list-style: none;
+  margin: 0 0 0 calc(var(--gap-unit) * -1);
+  max-height: 125px;
+  overflow-y: scroll;
+}
+
+.tcww__membersListItem {
+}
+
+a {
+  border-radius: calc(var(--border-radius-base) / 4);
+  color: var(--color-fg);
+  display: block;
+  font-size: 1rem;
+  line-height: 1.2;
+  max-width: 200px;
+  padding: var(--gap-unit);
+  text-underline-offset: var(--text-underline-offset);
+  text-decoration-thickness: var(--text-decoration-thickness);
+}
+
+a:focus {
+  color: var(--color-bg);
+  background-color: var(--color-fg);
+  outline: transparent;
+}
+
+.tcww__random {
+  font-style: italic;
+  line-height: 1.2;
+  margin: 0 0 1rem calc(var(--gap-unit) * -1);
 }

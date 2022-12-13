@@ -12,7 +12,7 @@ function getRandomMember(members) {
   const randomMember = getRandomEntry(members);
 
   return `
-    <a href="${randomMember.url}" class="webring__random">Random</a>
+    <a href="${randomMember.url}" class="tcww__random">I'm feeling lucky</a>
   `;
 }
 
@@ -21,8 +21,8 @@ function makeMemberList(members) {
 
   return shuffledMembers
     .map(
-      (member) => `<li class="webring__membersListItem">
-        <a href="${member.url}" class="webring__membersListItemLink">
+      (member) => `<li class="tcww__membersListItem">
+        <a href="${member.url}" class="tcww__membersListItemLink">
           ${member.name}
         </a>
       </li>`,
@@ -42,15 +42,17 @@ class TheClawWebringWidget extends HTMLElement {
     const meta = await fetch("https://the-claw-webring.netlify.app/data/meta.json").then((res) => res.json());
 
     const html = `
-    <div class="webring">
-    <!-- <img src="${meta.image}" alt="${meta.title}" class="webring__image" /> -->
-    <h3 class="webring__title">${meta.title}</h3>
-    
-    ${getRandomMember(members)}
-    
-    <ul class="webring__membersList">
-    ${makeMemberList(members)}
-    </ul>
+    <div class="tcww">
+      <div class="tcww__inner">
+        <!-- <img src="${meta.image}" alt="${meta.title}" class="tcww__image" /> -->
+        <h3 class="tcww__title">${meta.title}</h3>
+        
+        ${getRandomMember(members)}
+        
+        <ul class="tcww__membersList">
+          ${makeMemberList(members)}
+        </ul>
+      </div>
     </div>
     `;
 
