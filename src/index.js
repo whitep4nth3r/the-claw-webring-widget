@@ -39,13 +39,13 @@ class TheClawWebringWidget extends HTMLElement {
     const hostname = document.location.hostname;
 
     // For testing purposes in development
-    // if (hostname === "localhost") {
-    //   members.push({
-    //     url: "http://localhost:8888/",
-    //     name: "Testing in Dev",
-    //     feed: null,
-    //   });
-    // }
+    if (hostname === "localhost") {
+      members.push({
+        url: "http://localhost:8888/",
+        name: "Testing in Dev",
+        feed: null,
+      });
+    }
 
     const meta = await fetch("https://the-claw-webring.netlify.app/data/meta.json").then((res) => res.json());
 
