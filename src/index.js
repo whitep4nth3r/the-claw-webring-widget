@@ -36,10 +36,10 @@ class TheClawWebringWidget extends HTMLElement {
 
   async connectedCallback() {
     const members = await fetch("https://the-claw-webring.netlify.app/data/members.json").then((res) => res.json());
-    const loc = document.location.href;
+    const hostname = document.location.hostname;
 
-    // // For testing purposes in development
-    // if (loc === "http://localhost:8888/") {
+    // For testing purposes in development
+    // if (hostname === "localhost") {
     //   members.push({
     //     url: "http://localhost:8888/",
     //     name: "Testing in Dev",
@@ -49,7 +49,8 @@ class TheClawWebringWidget extends HTMLElement {
 
     const meta = await fetch("https://the-claw-webring.netlify.app/data/meta.json").then((res) => res.json());
 
-    const thisMemberIndex = members.map((e) => e.url).indexOf(loc);
+    const thisMember = members.find((member) => member.url.includes(hostname));
+    const thisMemberIndex = members.findIndex((item) => item === thisMember);
 
     const prevIndex = thisMemberIndex === 0 ? members.length - 1 : thisMemberIndex - 1;
     const nextIndex = thisMemberIndex === members.length - 1 ? 0 : thisMemberIndex + 1;
