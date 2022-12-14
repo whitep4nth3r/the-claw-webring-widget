@@ -10,7 +10,7 @@ The fallback content is provided in case JavaScript isn't available. Feel free t
 <script src="https://the-claw-webring-widget.netlify.app/the-claw-webring-widget.mjs" type="module"></script>
 
 <the-claw-webring-widget>
- <!-- start optional fallback content in the case of no JavaScript -->
+  <!-- start optional fallback content in the case of no JavaScript -->
   <style>
     .tcwr__inner {
       color: inherit;
@@ -48,13 +48,9 @@ The fallback content is provided in case JavaScript isn't available. Feel free t
   </style>
   <div class="tcwr__inner">
     <div class="tcwr__header">
-      <img
-        src="https://the-claw-webring.netlify.app/img/theclaw.png"
-        alt="The Claw Webring"
-        class="tcwr__image"
-      />
+      <img src="https://the-claw-webring.netlify.app/img/theclaw.png" alt="The Claw Webring" class="tcwr__image" />
       <h2 class="tcwr__title">The Claw Webring</h2>
-      <a href="https://github.com/whitep4nth3r/the-claw-webring" class="tcwr__view">View on GitHub</p>
+      <a href="https://github.com/whitep4nth3r/the-claw-webring" class="tcwr__view">View on GitHub</a>
     </div>
   </div>
   <!-- end optional fallback content in the case of no JavaScript -->
