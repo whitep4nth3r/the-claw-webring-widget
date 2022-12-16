@@ -61,19 +61,23 @@ class TheClawWebringWidget extends HTMLElement {
 
     const html = `
     <div class="tcwr">
-      <div class="tcwr__inner">
-        <div class="tcwr__header">
-          <img src="${meta.image}" alt="${meta.title}" class="tcwr__image" />
-          <h2 class="tcwr__title">${meta.title}</h2>
-          <p class="tcwr_count">${members.length} members</p>
-          <a href="https://github.com/whitep4nth3r/the-claw-webring#join-the-claw-webring" class="tcwr_join">Join The Claw Webring</a>
-        </div>
+      <div class="tcwr__header">
+        <h2 class="tcwr__title">${meta.title}</h2>
+      </div>
+      
+      <div class="tcwr__inner"> 
+        <img src="${meta.image}" alt="${meta.title}" class="tcwr__image" />
 
         <div class="tcwr__nav">
           <a href=${prevUrl} class="tcwr__navItem">Prev</a>
           ${getRandomMember(members)}
           <a href="${nextUrl}" class="tcwr__navItem">Next</a>
         </div>
+        
+        <a href="https://github.com/whitep4nth3r/the-claw-webring#join-the-claw-webring" class="tcwr_join">Join  ${
+          members.length
+        } members</a>
+
         ${
           this.hideMembers === "true"
             ? ""
