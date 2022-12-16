@@ -32,6 +32,7 @@ class TheClawWebringWidget extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+    this.hideMembers = this.getAttribute("hideMembers") || false;
   }
 
   async connectedCallback() {
@@ -73,10 +74,13 @@ class TheClawWebringWidget extends HTMLElement {
           ${getRandomMember(members)}
           <a href="${nextUrl}" class="tcwr__navItem">Next</a>
         </div>
-
-        <ul class="tcwr__membersList">
+        ${
+          this.hideMembers === "true"
+            ? ""
+            : `<ul class="tcwr__membersList">
           ${makeMemberList(members)}
-        </ul>
+        </ul>`
+        }
       </div>
     </div>
     `;

@@ -30,19 +30,19 @@ The fallback content is provided in case JavaScript isn't available. Feel free t
 </the-claw-webring-widget>
 ```
 
-## Theming
+## Options
 
-Default theme: `dark`
+Set the following options as attributes on the web component tag.
 
-Themes available:
+```text
+theme: "dark | light" (default: dark)
+hideMembers: "true | false" (default: false)
+```
 
-- `dark`
-- `light`
-
-Specify the theme on the Web Component like so:
+For example:
 
 ```html
-<the-claw-webring-widget theme="light">
+<the-claw-webring-widget theme="light" hideMembers="true">
   <!-- ... -->
 </the-claw-webring-widget>
 ```
