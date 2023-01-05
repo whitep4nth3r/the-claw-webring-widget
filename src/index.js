@@ -85,13 +85,9 @@ class TheClawWebringWidget extends HTMLElement {
           members.length
         } members</a>
 
-        ${
-          this.hideMembers === "true"
-            ? ""
-            : `<ul class="tcwr__membersList" data-memberlist>
+        <ul class="tcwr__membersList${this.hideMembers === "true" ? " tcwr__membersList--hide" : ""}" data-memberlist>
           ${makeMemberList(members)}
-        </ul>`
-        }
+        </ul>
       </div>
     </div>
     `;

@@ -173,6 +173,10 @@
   overflow-y: scroll;
 }
 
+.tcwr__membersList--hide {
+  display: none;
+}
+
 .tcwr__membersListItemLink {
   color: var(--color-fg);
   margin-bottom: 0.25rem;
