@@ -61,23 +61,34 @@ class TheClawWebringWidget extends HTMLElement {
 
     const html = `
     <div class="tcwr">
-      <div class="tcwr__inner">
-        <div class="tcwr__header">
-          <img src="${meta.image}" alt="${meta.title}" class="tcwr__image" />
-          <h2 class="tcwr__title">${meta.title}</h2>
-          <p class="tcwr_count">${members.length} members</p>
-          <a href="https://github.com/whitep4nth3r/the-claw-webring#join-the-claw-webring" class="tcwr_join">Join The Claw Webring</a>
+      <div class="tcwr__header">
+        <h2 class="tcwr__title">${meta.title}</h2>
+        <div class="tcwr__controls">
+          <button aria-label="Minimize" data-minimize></button>
+          <button aria-label="Maximize" data-maximize></button>
+          <button aria-label="Close" data-close></button>
         </div>
+      </div>
+    
+      <div class="tcwr__explosion" data-explosion></div>
+
+      <div class="tcwr__inner"> 
+        <img src="${meta.image}" alt="${meta.title}" class="tcwr__image" />
 
         <div class="tcwr__nav">
           <a href=${prevUrl} class="tcwr__navItem">Prev</a>
           ${getRandomMember(members)}
           <a href="${nextUrl}" class="tcwr__navItem">Next</a>
         </div>
+        
+        <a href="https://github.com/whitep4nth3r/the-claw-webring#join-the-claw-webring" class="tcwr_join">Join  ${
+          members.length
+        } members</a>
+
         ${
           this.hideMembers === "true"
             ? ""
-            : `<ul class="tcwr__membersList">
+            : `<ul class="tcwr__membersList" data-memberlist>
           ${makeMemberList(members)}
         </ul>`
         }
@@ -86,6 +97,29 @@ class TheClawWebringWidget extends HTMLElement {
     `;
 
     this.shadowRoot.innerHTML = html;
+
+    const minimize = this.shadowRoot.querySelector("[data-minimize]");
+    const maximize = this.shadowRoot.querySelector("[data-maximize]");
+    const memberList = this.shadowRoot.querySelector("[data-memberlist]");
+    const close = this.shadowRoot.querySelector("[data-close]");
+    const explosion = this.shadowRoot.querySelector("[data-explosion]");
+
+    minimize.addEventListener("click", () => {
+      memberList.style.display = "none";
+    });
+
+    maximize.addEventListener("click", () => {
+      memberList.style.display = "block";
+    });
+
+    close.addEventListener("click", () => {
+      memberList.style.display = "none";
+      explosion.style.display = "block";
+
+      setTimeout(() => {
+        this.shadowRoot.innerHTML = "";
+      }, 1000);
+    });
 
     const style = document.createElement("style");
     style.innerHTML = styles;
