@@ -39,8 +39,10 @@ class TheClawWebringWidget extends HTMLElement {
     const members = await fetch("https://the-claw-webring.netlify.app/data/members.json").then((res) => res.json());
     const hostname = document.location.hostname;
 
+    const cleanHostname = hostname.replace("www.", "");
+
     // For testing purposes in development
-    if (hostname === "localhost") {
+    if (cleanHostname === "localhost") {
       members.push({
         url: "http://localhost:8888/",
         name: "Testing in Dev",
@@ -50,7 +52,7 @@ class TheClawWebringWidget extends HTMLElement {
 
     const meta = await fetch("https://the-claw-webring.netlify.app/data/meta.json").then((res) => res.json());
 
-    const thisMember = members.find((member) => member.url.includes(hostname));
+    const thisMember = members.find((member) => member.url.includes(cleanHostname));
     const thisMemberIndex = members.findIndex((item) => item === thisMember);
 
     const prevIndex = thisMemberIndex === 0 ? members.length - 1 : thisMemberIndex - 1;
