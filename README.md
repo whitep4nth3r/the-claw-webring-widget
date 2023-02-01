@@ -4,10 +4,14 @@
 
 Add the following to a page on your website.
 
-The fallback content is provided in case JavaScript isn't available. Feel free to omit this or edit this as you wish.
+The fallback content is provided in case JavaScript isn't available. Feel free to omit this or edit
+this as you wish.
 
 ```html
-<script src="https://the-claw-webring-widget.netlify.app/the-claw-webring-widget.mjs" type="module"></script>
+<script
+  src="https://the-claw-webring-widget.netlify.app/the-claw-webring-widget.mjs"
+  type="module"
+></script>
 
 <the-claw-webring-widget>
   <!-- start optional fallback content in the case of no JavaScript -->
@@ -21,7 +25,10 @@ The fallback content is provided in case JavaScript isn't available. Feel free t
         style="grid-area: image; height: 4rem; transform: rotate(-8deg);"
       />
       <h2 style="grid-area: title; font-size: 1.4rem; margin: 0;">The Claw Webring</h2>
-      <a href="https://github.com/whitep4nth3r/the-claw-webring" style="grid-area: view; margin: 0; color: inherit;">
+      <a
+        href="https://github.com/whitep4nth3r/the-claw-webring"
+        style="grid-area: view; margin: 0; color: inherit;"
+      >
         View on GitHub
       </a>
     </div>
@@ -37,12 +44,19 @@ Set the following options as attributes on the web component tag.
 ```text
 theme: "dark | light" (default: dark)
 hideMembers: "true | false" (default: false)
+fullWidth: "true | false" (default: false)
 ```
 
 For example:
 
 ```html
-<the-claw-webring-widget theme="light" hideMembers="true">
+<the-claw-webring-widget theme="light" hideMembers="true" fullWidth="true">
   <!-- ... -->
 </the-claw-webring-widget>
 ```
+
+## About `fullWidth`
+
+The component has a default fixed width of 320px for nostalgia reasons 🌚. If you'd like to put the
+widget inside a container and allow the widget to span the full width of that container, use
+`fullWidth="true"`.

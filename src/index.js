@@ -33,10 +33,13 @@ class TheClawWebringWidget extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this.hideMembers = this.getAttribute("hideMembers") || false;
+    this.fullWidth = this.getAttribute("fullWidth") || false;
   }
 
   async connectedCallback() {
-    const members = await fetch("https://the-claw-webring.netlify.app/data/members.json").then((res) => res.json());
+    const members = await fetch("https://the-claw-webring.netlify.app/data/members.json").then(
+      (res) => res.json(),
+    );
     const hostname = document.location.hostname;
     const cleanHostname = hostname.replace("www.", "");
     const IS_DEV = cleanHostname === "localhost";
@@ -50,7 +53,9 @@ class TheClawWebringWidget extends HTMLElement {
       });
     }
 
-    const meta = await fetch("https://the-claw-webring.netlify.app/data/meta.json").then((res) => res.json());
+    const meta = await fetch("https://the-claw-webring.netlify.app/data/meta.json").then((res) =>
+      res.json(),
+    );
 
     const thisMember = members.find((member) => member.url.includes(cleanHostname));
     const thisMemberIndex = members.findIndex((item) => item === thisMember);
@@ -70,8 +75,10 @@ class TheClawWebringWidget extends HTMLElement {
     const prevUrl = members[prevIndex].url;
     const nextUrl = members[nextIndex].url;
 
+    const fullWidthOverride = this.fullWidth ? ` style="width: 100%;"` : "";
+
     const html = `
-    <div class="tcwr">
+    <div class="tcwr"${fullWidthOverride}>
       <div class="tcwr__header">
         <h2 class="tcwr__title">${meta.title}</h2>
         <div class="tcwr__controls">
@@ -96,7 +103,9 @@ class TheClawWebringWidget extends HTMLElement {
           members.length
         } members</a>
 
-        <ul class="tcwr__membersList${this.hideMembers === "true" ? " tcwr__membersList--hide" : ""}" data-memberlist>
+        <ul class="tcwr__membersList${
+          this.hideMembers === "true" ? " tcwr__membersList--hide" : ""
+        }" data-memberlist>
           ${makeMemberList(members)}
         </ul>
       </div>
